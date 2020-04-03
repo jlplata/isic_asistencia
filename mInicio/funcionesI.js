@@ -348,10 +348,11 @@ function salir(){
               $("#icoLogin").addClass("fas fa-lock");
               $("#btnIngresar").attr("disabled","disabled");
               $("#loginUsuario").focus();
-  
+              console.log($('#checkCR').val());
               var idUsuario=$("#inicioIdusuario").val();
               actividad  ="Salio del sistema";
               log(actividad,idUsuario);
+              
           }, 2000);}
           else{
               alertify.error(" <i class='fa fa-times fa-lg'></i> Cancelado",2);
@@ -365,6 +366,7 @@ $(document).ready(function () {
     $('.sidebarCollapse').on('click', function () {
         $('#sidebar').toggleClass('active');
         $(this).toggleClass('active');
+        $("#checkCR").prop('checked',false);
     });
 });
 

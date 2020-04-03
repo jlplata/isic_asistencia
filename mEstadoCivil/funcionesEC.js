@@ -126,6 +126,7 @@ function llenar_lista_EC(){
             alert("Error en metodo AJAX"); 
         },
     });
+   
 }
 
 function llenar_formulario_EC(id,edesc){

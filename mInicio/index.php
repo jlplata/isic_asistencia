@@ -190,6 +190,7 @@ $fecha=date("Y-m-d");
     <script>
         combo_ecivil();
         selectTwo();
+        
     </script>
 
     <script>

@@ -373,6 +373,7 @@ function combo_ecivil()
             $("#ecivil , #eEcivil , #mEcivil , #eDesc").empty();
             $("#ecivil , #eEcivil , #mEcivil , #eDesc").html(respuesta);    
             selectTwo();
+            
         },
         error : function(xhr, status) {
             alert('Disculpe, existió un problema');

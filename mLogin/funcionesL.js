@@ -23,7 +23,7 @@ $("#frmLogin").submit(function(e){
                         confirmButtonClass: "btn-dark",
                         confirmButtonText: "Enterado"
                     }, function (isConfirm) {
-                        $("#btnIngresar").attr("disabled","disabled");
+                        $("#btnIngresar , #checkCR").attr("disabled","disabled");
                         var h_sidebar="#c0392b";
                         var color_base="#e74c3c";
                         var letra_color="#fff";
@@ -38,7 +38,8 @@ $("#frmLogin").submit(function(e){
                 }else{
                     $("#contentLogin").hide();
                     $("#contentSistema").show();
-
+                    CambioContraseña();
+                    
                     persona=dataArray.result.persona;
                     idUsuario=dataArray.result.id_usuario;
                     idDato=dataArray.result.id_dato;
@@ -48,9 +49,10 @@ $("#frmLogin").submit(function(e){
                     $('#sidebar').toggleClass('active');
                     permisos(dataArray.result.permiso_datos_persona,dataArray.result.permiso_ecivil,dataArray.result.permiso_usuario,dataArray.result.permiso_temas);
                     preloader(1,'Asitencia del personal');
-                    actividad  ="Ingreso al sistema";
+                    actividad  = "Ingreso al sistema";
                     log(actividad,dataArray.result.id_usuario);
                     verAsistencias();
+                    
                 }
             }else{
                 swal({
@@ -60,7 +62,7 @@ $("#frmLogin").submit(function(e){
                     confirmButtonClass: "btn-dark",
                     confirmButtonText: "Enterado"
                 }, function (isConfirm) {
-                    $("#btnIngresar").attr("disabled","disabled");
+                    $("#btnIngresar , #checkCR").attr("disabled","disabled");
                     var h_sidebar="#c0392b";
                     var color_base="#e74c3c";
                     var letra_color="#fff";
@@ -127,7 +129,7 @@ $("#loginUsuario").keyup(function(){
                 //$("#frmLogin").hide();
                 idTema=dataArray.result.id_tema;
                 aplicarTema(idTema,'login');
-                $("#btnIngresar").removeAttr("disabled");
+                $("#btnIngresar , #checkCR").removeAttr("disabled");
                 $("#icoLogin").removeClass("fas fa-lock");
                 $("#icoLogin").addClass("fas fa-unlock");
                 $("#inicioIdusuario").val(dataArray.result.id_usuario);
@@ -138,7 +140,7 @@ $("#loginUsuario").keyup(function(){
                 //colores default
                 $("#icoLogin").removeClass("fas fa-unlock");
                 $("#icoLogin").addClass("fas fa-lock");
-                $("#btnIngresar").attr("disabled","disabled");
+                $("#btnIngresar , #checkCR").attr("disabled","disabled");
                 var h_sidebar="#2f3640";
                 var color_base="#353b48";
                 var letra_color="#fff";
@@ -152,3 +154,108 @@ $("#loginUsuario").keyup(function(){
         },
     });
 });
+
+function CambioContraseña() {
+    var chec
+    if (($("#checkCR").prop('checked') == false)) {
+        chec = 0;
+    }else{
+        chec = 1;
+    }
+
+    if (chec == 1) {
+        swal({
+            title: "",
+            text: "¿Deseas cambiar la contraseña?",
+            type: "input",
+            showCancelButton: true,
+            confirmButtonClass: "btn-dark",
+            confirmButtonText: "Continuar",
+            cancelButtonText: "Generar contraseña",
+            cancelButtonClass: "btn-outline-primary",
+                closeOnConfirm: false,
+                closeOnCancel: false,
+                inputPlaceholder: "Nueva contraseña "
+
+            },  function (inputValue) {
+                
+                if (inputValue === "") {
+                    swal.showInputError("You need to write something!");
+                    return false
+                  }
+                if (inputValue.length < 8) {
+                    swal.showInputError("You need to write something!");
+                    return false
+                  }
+              if ( inputValue.length >= 8) {
+             
+                if ( inputValue.length >= 8) {
+                    swal({
+                        title: "Confirmar Contraseña!",
+                        type: "input",
+                        confirmButtonClass: "btn-dark",
+                        confirmButtonText: "Confirmar",
+                        showCancelButton: false,
+                        closeOnConfirm: false,
+                        inputPlaceholder: "Confirmar nueva contraseña "
+                      }, function (inputValueC) {
+                        
+                        if (inputValue == inputValueC) {
+                            
+                            id     = $("#inicioIdusuario").val();
+                            contra = inputValueC;
+                            dato   = $("#inicioIdDato").val();
+                            $.ajax({
+                                url:"../mLogin/ContaseñaNueva.php",
+                                type:"POST",
+                                dateType:"json",
+                                data:{id,contra,dato},
+                                success:function(respuesta){
+                                    swal("Contraseña Actualizada!", " " , "success",2000);
+                                alertify.success("<i class='fas fa-file-upload'></i>",1);
+                                },
+                                error:function(xhr,status){
+                                    alert("Error en metodo AJAX"); 
+                                },
+                            });
+                        }
+    
+                      });
+                }else{
+                    alertify.error(" <i class='fa fa-times fa-lg'></i> Cancelado",2);
+                }
+                
+                  var idUsuario=$("#inicioIdusuario").val();
+                  actividad  ="El usuario cambio su contraseña";
+                  log(actividad,idUsuario);
+                  
+              }
+              else{
+                
+                var aleatorio = Math.round(Math.random()* (11111111, 99999999));
+                id     = $("#inicioIdusuario").val();
+                contra = aleatorio;
+                dato   = $("#inicioIdDato").val();
+                $.ajax({
+                    url:"../mLogin/ContaseñaNueva.php",
+                    type:"POST",
+                    dateType:"json",
+                    data:{id,contra,dato},
+                    success:function(respuesta){
+                        swal("Contraseña Actualizada!", 'Su nueva contraseña es "'+aleatorio+'"', "success");
+                        // alertify.success("<i class='fas fa-file-upload'></i>",1);
+                    },
+                    error:function(xhr,status){
+                        alert("Error en metodo AJAX"); 
+                    },
+                });
+
+                var idUsuario=$("#inicioIdusuario").val();
+                  actividad  ="El usuario cambio su contraseña";
+                  log(actividad,idUsuario);
+              }
+            });
+    }
+
+
+}
