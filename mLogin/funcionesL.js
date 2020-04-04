@@ -2,8 +2,8 @@
 $("#frmLogin").submit(function(e){
 
     var usuario    = $("#loginUsuario").val();
-    var contra     = $("#loginContra").val();
-
+    var contra     = $("#loginContra").val(); 
+    
     $.ajax({
         url:"../mLogin/validar_login.php",
         type:"POST",
@@ -23,6 +23,7 @@ $("#frmLogin").submit(function(e){
                         confirmButtonClass: "btn-dark",
                         confirmButtonText: "Enterado"
                     }, function (isConfirm) {
+                        $("#checkCR").bootstrapToggle('on');
                         $("#btnIngresar , #checkCR").attr("disabled","disabled");
                         var h_sidebar="#c0392b";
                         var color_base="#e74c3c";
@@ -33,28 +34,35 @@ $("#frmLogin").submit(function(e){
                         $("#icoLogin").addClass("fas fa-lock");
                         $("#frmLogin")[0].reset();
                         $("#loginUsuario").focus();
+
                     });
 
                 }else{
-                    $("#contentLogin").hide();
-                    $("#contentSistema").show();
-                    CambioContraseña();
-                    
-                    persona=dataArray.result.persona;
-                    idUsuario=dataArray.result.id_usuario;
-                    idDato=dataArray.result.id_dato;
+                    if (($("#checkCR").prop('checked'))) {
+                        $('#modalContra').modal("show");
+                        $("#btnGuardarContra").prop('disabled', true);
+                    }else{
 
-                    $("#titular").text(persona);
-
-                    $('#sidebar').toggleClass('active');
-                    permisos(dataArray.result.permiso_datos_persona,dataArray.result.permiso_ecivil,dataArray.result.permiso_usuario,dataArray.result.permiso_temas);
-                    preloader(1,'Asitencia del personal');
-                    actividad  = "Ingreso al sistema";
-                    log(actividad,dataArray.result.id_usuario);
-                    verAsistencias();
-                    
-                }
-            }else{
+                        $("#contentLogin").hide();
+                        $("#contentSistema").show();
+                        
+                        persona=dataArray.result.persona;
+                        idUsuario=dataArray.result.id_usuario;
+                        idDato=dataArray.result.id_dato;
+                        
+                        $("#titular").text(persona);
+                        
+                        $('#sidebar').toggleClass('active');
+                        permisos(dataArray.result.permiso_datos_persona,dataArray.result.permiso_ecivil,dataArray.result.permiso_usuario,dataArray.result.permiso_temas);
+                        preloader(1,'Asitencia del personal');
+                        actividad  = "Ingreso al sistema";
+                        log(actividad,dataArray.result.id_usuario);
+                        verAsistencias();
+                       
+                    }
+                        
+                    }
+                }else{
                 swal({
                     title: "Mensaje!",
                     text: "La contraseña es incorrecta.",
@@ -62,6 +70,7 @@ $("#frmLogin").submit(function(e){
                     confirmButtonClass: "btn-dark",
                     confirmButtonText: "Enterado"
                 }, function (isConfirm) {
+                    $("#checkCR").bootstrapToggle('off');
                     $("#btnIngresar , #checkCR").attr("disabled","disabled");
                     var h_sidebar="#c0392b";
                     var color_base="#e74c3c";
@@ -72,6 +81,8 @@ $("#frmLogin").submit(function(e){
                     $("#icoLogin").addClass("fas fa-lock");
                     $("#frmLogin")[0].reset();
                     $("#loginUsuario").focus();
+                    
+
                 });
 
             }
@@ -155,107 +166,118 @@ $("#loginUsuario").keyup(function(){
     });
 });
 
-function CambioContraseña() {
-    var chec
-    if (($("#checkCR").prop('checked') == false)) {
-        chec = 0;
-    }else{
-        chec = 1;
-    }
+function LimpiarContras() {
+$('#NContra, #CNContra').val('');
+}
 
-    if (chec == 1) {
-        swal({
-            title: "",
-            text: "¿Deseas cambiar la contraseña?",
-            type: "input",
-            showCancelButton: true,
-            confirmButtonClass: "btn-dark",
-            confirmButtonText: "Continuar",
-            cancelButtonText: "Generar contraseña",
-            cancelButtonClass: "btn-outline-primary",
-                closeOnConfirm: false,
-                closeOnCancel: false,
-                inputPlaceholder: "Nueva contraseña "
+$('#MostrarNContra').click(function() {
+       if ($('#NCOj').hasClass('fa-eye-slash')) {
 
-            },  function (inputValue) {
-                
-                if (inputValue === "") {
-                    swal.showInputError("You need to write something!");
-                    return false
-                  }
-                if (inputValue.length < 8) {
-                    swal.showInputError("You need to write something!");
-                    return false
-                  }
-              if ( inputValue.length >= 8) {
-             
-                if ( inputValue.length >= 8) {
-                    swal({
-                        title: "Confirmar Contraseña!",
-                        type: "input",
-                        confirmButtonClass: "btn-dark",
-                        confirmButtonText: "Confirmar",
-                        showCancelButton: false,
-                        closeOnConfirm: false,
-                        inputPlaceholder: "Confirmar nueva contraseña "
-                      }, function (inputValueC) {
-                        
-                        if (inputValue == inputValueC) {
-                            
-                            id     = $("#inicioIdusuario").val();
-                            contra = inputValueC;
-                            dato   = $("#inicioIdDato").val();
-                            $.ajax({
-                                url:"../mLogin/ContaseñaNueva.php",
-                                type:"POST",
-                                dateType:"json",
-                                data:{id,contra,dato},
-                                success:function(respuesta){
-                                    swal("Contraseña Actualizada!", " " , "success",2000);
-                                alertify.success("<i class='fas fa-file-upload'></i>",1);
-                                },
-                                error:function(xhr,status){
-                                    alert("Error en metodo AJAX"); 
-                                },
-                            });
-                        }
+            $('#NContra').removeAttr('type');
+            $('#NCOj').addClass('fa-eye').removeClass('fa-eye-slash');
+        }else{
+            $('#NContra').attr('type','password');
+            $('#NCOj').addClass('fa-eye-slash').removeClass('fa-eye');
+       }
+    });
+
+$('#MostrarCNContra').click(function() {
+       if ($('#CNCOj').hasClass('fa-eye-slash')) {
+
+            $('#CNContra').removeAttr('type');
+            $('#CNCOj').addClass('fa-eye').removeClass('fa-eye-slash');
+        }else{
+            $('#CNContra').attr('type','password');
+            $('#CNCOj').addClass('fa-eye-slash').removeClass('fa-eye');
+       }
+    });
+
+function GenerarContra() {
+    var caracteres = "abcdefghijkmnpqrtuvwxyzABCDEFGHJKMNPQRTUVWXYZ012346789";
+    var contraseña = "";
+    for (i=0; i<8; i++) contraseña +=caracteres.charAt(Math.floor(Math.random()*caracteres.length)); 
     
-                      });
-                }else{
-                    alertify.error(" <i class='fa fa-times fa-lg'></i> Cancelado",2);
-                }
-                
-                  var idUsuario=$("#inicioIdusuario").val();
-                  actividad  ="El usuario cambio su contraseña";
-                  log(actividad,idUsuario);
-                  
-              }
-              else{
-                
-                var aleatorio = Math.round(Math.random()* (11111111, 99999999));
-                id     = $("#inicioIdusuario").val();
-                contra = aleatorio;
-                dato   = $("#inicioIdDato").val();
-                $.ajax({
-                    url:"../mLogin/ContaseñaNueva.php",
-                    type:"POST",
-                    dateType:"json",
-                    data:{id,contra,dato},
-                    success:function(respuesta){
-                        swal("Contraseña Actualizada!", 'Su nueva contraseña es "'+aleatorio+'"', "success");
-                        // alertify.success("<i class='fas fa-file-upload'></i>",1);
-                    },
-                    error:function(xhr,status){
-                        alert("Error en metodo AJAX"); 
-                    },
-                });
+    
+    if (ValContra(contraseña)=="Si") {
+        $('#NContra , #CNContra').val(contraseña);
+        $('#CNContra').keyup();
+        $('#NContra').keyup();
+        $("#btnGuardarContra").prop('disabled', false);
+    }else{
+        GenerarContra();
+    }
+}
 
-                var idUsuario=$("#inicioIdusuario").val();
-                  actividad  ="El usuario cambio su contraseña";
-                  log(actividad,idUsuario);
-              }
-            });
+$('#CNContra').keyup(function() {
+    var n = $('#NContra').val();
+    var cn = $('#CNContra').val();
+    if (n == cn) {
+        $('#CNContra').css("color",'#02b44e');
+        $("#btnGuardarContra").prop('disabled', false);
+    }else{
+        $('#CNContra').css("color", rojo);
+        $("#btnGuardarContra").prop('disabled', true);
+    }
+});
+
+$('#NContra').keyup(function () {
+    valor=$(this);    
+    //validar curp + expresion regular
+    if (ValContra(valor.val())=="Si") {
+        //$("#btnGuardar-DP").removeAttr('disabled');
+        $(valor).css("color",'#02b44e');
+        $('#CNContra').keyup();
+    }else{
+        //$("#btnGuardar-DP").attr('disabled','disabled');
+        $(valor).css("color", rojo);
+        $('#CNContra').keyup();
     }
 
+});
 
+function ValContra(contras) {
+    var validador;
+        var contraseña=contras;
+    
+        // Expresion regular para contraseña
+        var re = /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/,
+            validado = contraseña.match(re);
+        
+        if (!validado){  //Coincide con el formato general?
+            validador = "No";
+        }else{
+            validador = "Si";
+        }
+        return validador;
+}
+
+function ContraNueva() {
+    
+        id                             = $("#loginUsuario").val();
+        contra                         = $("#CNContra").val();
+
+        $.ajax({
+            url                        : "../mLogin/ContaseñaNueva.php",
+            type                       : "POST",
+            dateType                   : "json",
+            data                       : {id,contra},
+            success                    : function(respuesta){
+                swal("Contraseña Actualizada!", " " , "success",2000);
+                $("#loginContra").val(contra);
+                // $("#frmLogin").submit();
+              
+                $("#btnIngresar").submit();
+                $('#modalContra').modal("hide");
+                $("#checkCR").bootstrapToggle('off');
+                $("#checkCR").prop('checked',false);
+                LimpiarContras();
+                $('#CNContra , #NContra').keyup();
+            },
+            error                      : function(xhr,status){
+                alert("Error en metodo AJAX"); 
+            },
+        }); 
+
+
+    
 }

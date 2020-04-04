@@ -348,7 +348,6 @@ function salir(){
               $("#icoLogin").addClass("fas fa-lock");
               $("#btnIngresar").attr("disabled","disabled");
               $("#loginUsuario").focus();
-              console.log($('#checkCR').val());
               var idUsuario=$("#inicioIdusuario").val();
               actividad  ="Salio del sistema";
               log(actividad,idUsuario);
@@ -367,6 +366,7 @@ $(document).ready(function () {
         $('#sidebar').toggleClass('active');
         $(this).toggleClass('active');
         $("#checkCR").prop('checked',false);
+        
     });
 });
 

@@ -305,7 +305,7 @@ $("#curp , #eCurp").keyup(function() {
     //validar curp + expresion regular
     if (curpValida(valor.val())=="Si") {
         //$("#btnGuardar-DP").removeAttr('disabled');
-        $(valor).css("color", obscuro);
+        $(valor).toggleClass();
         alertify.success("Curp valida !",1);
     }else{
         //$("#btnGuardar-DP").attr('disabled','disabled');

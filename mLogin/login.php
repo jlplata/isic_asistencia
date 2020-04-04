@@ -14,18 +14,17 @@
            
             </div>
             <div class="col text-left">
-                <input  id="checkCR" onchange="" class="toggle-two" type="checkbox"  data-toggle="toggle" data-onstyle="outline-success" data-width="60" data-size="sm" data-offstyle="outline-danger" data-on="<i class='fa fa-check'></i> Si" data-off="<i class='fa fa-times'></i> No">
-                <label for="checkCR" > &nbsp; Actualizar contraseña</label>
+                <input type="checkbox"  data-toggle="toggle" data-size="sm" data-onstyle="outline-success" data-offstyle="outline-danger" data-on="<i class='fa fa-check'></i> Si" data-off="<i class='fa fa-times'></i> No" id="checkCR">
+                &nbsp; Actualizar contraseña
+                </button>
             </div>
             <br>
             <div class="col text-center">
-                <button   type="submit" class="btn btn-outline-dark active" id="btnIngresar" disabled>
+                <button   type="submit" class="btn btn-outline-dark active" data-toggle="modal" data-target="modalContra" id="btnIngresar" disabled>
                     <i class="fas fa-lock" id="icoLogin"></i>
                     Ingresar al sistema
                 </button>
-            </div>
-            
-                    
+            </div>  
         </form>
     </div>
 </div>

@@ -70,7 +70,8 @@ $("#frmActualizar-EC").submit(function(e){
         cancelButtonClass: "btn-outline-danger",
         closeOnConfirm: false,
         closeOnCancel: true,
-        showLoaderOnConfirm: true
+        showLoaderOnConfirm: true,
+        showCloseButton: true
       }, function (isConfirm) {
         if (isConfirm) {
         setTimeout(function () {

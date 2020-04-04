@@ -3,17 +3,15 @@
 include ("../conexion/conexionli.php");
 
 //Recibo valores con el metodo POST
-$id_usuario = $_POST['id'];
+$id_usuario = trim($_POST['id']);
 $contraseña = trim($_POST['contra']);
-$dato       = trim($_POST['dato']);
 
 //Inserto registro en tabla pacientes 
 $cadena = "UPDATE usuarios
 			SET
-                id_usuario = $id_usuario,
-				contra      = $contraseña
+				contra      = '$contraseña'
 			WHERE 
-				id_dato= $dato";
+				nombre_usuario = '$id_usuario'";
 $actualizar = mysqli_query($conexionLi, $cadena);
 
 //En caso de error imprime
