@@ -277,7 +277,4 @@ function ContraNueva() {
                 alert("Error en metodo AJAX"); 
             },
         }); 
-
-
-    
 }

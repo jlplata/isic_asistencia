@@ -5,7 +5,7 @@
 			<div class="modal-header">
 							
 				<h4 class="modal-title">Cambio de Contraseña</h4>	
-                <button type="button" class="close" data-dismiss="modal" onClick="LimpiarContras();" aria-hidden="true">&times;</button>
+                <button type="button" class="close" id="close" data-dismiss="modal" onClick="LimpiarContras();" aria-hidden="true">&times;</button>
             </div>
             <form id = "frmContraN" action="" method="post">
 			<div class="modal-body">

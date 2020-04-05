@@ -33,8 +33,8 @@ $cadenaMenu = "SELECT
     <li class="menu" id="liTemas">
         <a href="#"><i class="fas fa-paint-brush"></i> Crear Temas</a>
     </li>
-    <li class="active activado" id="liContras">
-        <a href="#"><i class="fas fa-key"></i> Cambiar Contraseña</a>
+    <li class="active activado" id="liContras" >
+        <a onClick="ContraMenu();" data-toggle="modal" data-target="modalContra"><i class="fas fa-key"></i> Cambiar Contraseña</a>
     </li>
     <li class="active activado">
         <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" id="mnuColapsado"><i class="fas fa-tint"></i> Temas</a>

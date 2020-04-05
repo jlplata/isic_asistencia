@@ -39,6 +39,7 @@ $fecha=date("Y-m-d");
 
 <body class="animated  fadeIn">
 <a href="javascript:void(0);" id="scroll" title="Scroll to Top" style="display: none;">Top<span></span></a>
+    
     <div id="contentLogin">
         <?php
         include'../mLogin/login.php';

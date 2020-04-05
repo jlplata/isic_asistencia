@@ -461,3 +461,8 @@ $('#scroll').click(function(){
     $("html, body").animate({ scrollTop: 0 }, 600); 
     return false; 
 });
+
+function ContraMenu(){
+    $('#modalContra').modal("show");
+    $("#btnGuardarContra").prop('disabled', true);   
+}

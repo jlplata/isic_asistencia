@@ -9,7 +9,7 @@ $idTema   	= $_POST['idTema'];
 $fecha=date("Y-m-d"); 
 $hora=date ("H:i:s");
 
-//Inserto registro en tabla pacientes 
+//Inserto registro en tabla usuarios 
 $cadena = "UPDATE usuarios
 			SET
 				id_tema = '$idTema'
