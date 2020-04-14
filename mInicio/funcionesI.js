@@ -104,8 +104,11 @@ function aplicarTema(id,validador){
                 //alertify.success(actividad,2);
 
                 if(validador=='enlace'){
+                    
                     preloader(1,"Cambiando al tema "+tema);
                     actividad  ="Ha cambiado al tema "+tema;
+                    eleguiraudio(Math.round(Math.random() * (5 - 1)));
+                    
                     var idUser=$("#inicioIdusuario").val();
 
                     $('#mnuColapsado').click();
@@ -465,4 +468,24 @@ $('#scroll').click(function(){
 function ContraMenu(){
     $('#modalContra').modal("show");
     $("#btnGuardarContra").prop('disabled', true);   
+}
+
+function eleguiraudio(a) {
+    switch (a) {
+        case 1:
+           return $("#audio1")[0].play();
+            break;
+        case 2: 
+            return $("#audio2")[0].play();
+        break;
+        case 3:
+            return $("#audio3")[0].play();
+        break;
+        case 4:
+            return $("#audio4")[0].play();
+        break;
+        default:
+            return $("#audio1")[0].play();
+            break;
+    }
 }

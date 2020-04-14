@@ -131,6 +131,11 @@ $fecha=date("Y-m-d");
 
     </div>
 
+    <!-- audios -->
+    <audio id="audio1" src="../audios/1.mp3" style="display:none;" type = "audio/mp3"></audio>
+    <audio id="audio2" src="../audios/2.mp3" style="display:none;" type = "audio/mp3"></audio>
+    <audio id="audio3" src="../audios/3.mp3" style="display:none;" type = "audio/mp3"></audio>
+    <audio id="audio4" src="../audios/4.mp3" style="display:none;" type = "audio/mp3"></audio>
     <!-- Modal de carga -->
         <?php include'../modales/modalCarga.php'; ?>
     <!-- Modal de carga -->  
