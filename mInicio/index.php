@@ -151,7 +151,9 @@ $fecha=date("Y-m-d");
     <!-- Modal de Contra -->
         <?php include'../modales/modalContra.php'; ?>
     <!-- Modal de Contra -->
-
+    <!-- Modal de Contra -->
+        <?php include'../modales/modalHorario.php'; ?>
+    <!-- Modal de Contra -->
     <!-- jQuery -->
     <script src="../plugins/jQuery/jquery-3.3.1.js"></script>   
     <!-- Bootstrap-4 -->

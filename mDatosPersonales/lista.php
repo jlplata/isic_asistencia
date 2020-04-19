@@ -1,26 +1,45 @@
+
 <?php
 // Conexion mysqli
 include'../conexion/conexionli.php';
 
 include'../funciones/calcularEdad.php';
+
 //Variable de Nombre
 $varGral="-DP";
 
 $cadena = "SELECT
-                id_datos,
-                activo,
-                nombre,
-                ap_paterno,
-                ap_materno,
-                fecha_nac,
-                correo,
-                curp,
-                clave,
-                domicilio,
-                sexo,
-                id_ecivil
-            FROM
-                datos ORDER BY id_datos DESC";
+                d.id_datos,
+                d.activo,
+                d.nombre,
+                d.ap_paterno,
+                d.ap_materno,
+                d.fecha_nac,
+                d.correo,
+                d.curp,
+                d.clave,
+                d.domicilio,
+                d.sexo,
+                d.id_ecivil,
+                h.l_entrada,
+                h.l_salida,
+                h.m_entrada,
+                h.m_salida,
+                h.mi_entrada,
+                h.mi_salida,
+                h.j_entrada,
+                h.j_salida,
+                h.v_entrada,
+                h.v_salida,
+                h.s_entrada,
+                h.s_salida,
+                h.d_entrada,
+                h.d_salida,
+                h.turno
+                FROM
+                datos as d
+                LEFT JOIN horarios as h ON d.id_datos = h.id_datos_persona
+                ORDER BY id_datos DESC";
 $consultar = mysqli_query($conexionLi, $cadena);
 //$row = mysqli_fetch_array($consultar);
 
@@ -35,6 +54,7 @@ $consultar = mysqli_query($conexionLi, $cadena);
                 <th scope="col">Imprimir</th>
                 <th scope="col">Datos</th>
                 <th scope="col">Foto</th>
+                <th scope="col">Horario</th>
                 <th scope="col">Audio</th>
                 <th scope="col">Clave</th>
                 <th scope="col">Nombre</th>
@@ -79,9 +99,28 @@ $consultar = mysqli_query($conexionLi, $cadena);
             $ecivil     = $row[11];
             $nCompleto  = $row[2].' '.$row[3].' '.$row[4];
             
+             // Datos de horarios
+             $l_entrada  = $row[12];
+             $l_salida   = $row[13];
+             $m_entrada  = $row[14];
+             $m_salida   = $row[15];
+             $mi_entrada = $row[16];
+             $mi_salida  = $row[17];
+             $j_entrada  = $row[18];
+             $j_salida   = $row[19];
+             $v_entrada  = $row[20];
+             $v_salida   = $row[21];
+             $s_entrada  = $row[22];
+             $s_salida   = $row[23];
+             $d_entrada  = $row[24];
+             $d_salida   = $row[25];
+             $turno      = $row[26];
+
             $sonido     ="El nombre completo de la persona es ".$nombre." ".$paterno." ".$materno." , registrado con la clave ".$clave;
 
             $foto       = '../fotos/'.$clave.'.jpg';
+            
+            // $icoHorario = Horario($id);
 
             if (file_exists($foto)){
                 $icoFoto="<i class='fas fa-check '></i>";
@@ -91,7 +130,16 @@ $consultar = mysqli_query($conexionLi, $cadena);
                 $tFoto="No";
             }
 
-            ?>
+            if($turno == NULL){
+                $icoHorario="<i class='fas fa-calendar-times fa-lg'></i>";
+                $CnH="No";
+            }else{
+                $icoHorario="<i class='fas fa-calendar-check fa-lg'></i>";
+                $CnH="Si";
+            }
+
+           ?>
+           
             <tr class="centrar">
                 <th scope="row" class="textoBase">
                     <?php echo $n?>
@@ -113,6 +161,11 @@ $consultar = mysqli_query($conexionLi, $cadena);
                 <td>
                     <button <?php echo $dtnDesabilita?> type="button" class="foto btn btn-outline-secondary btn-sm activo"  id="btnFoto<?php echo $varGral?><?php echo $n?>" onclick="abrirModalFoto('<?php echo $id?>','<?php echo $clave?>','<?php echo $nCompleto?>','<?php echo $tFoto?>')">
                         <?php echo $icoFoto?>
+                    </button>
+                </td>
+                <td>
+                    <button <?php echo $dtnDesabilita?> type="button" class="horario btn btn-outline-dark btn-sm activo"  id="btnHorario<?php echo $varGral?><?php echo $n?>" onclick="abrirModalHorario('<?php echo $id?>', '<?php echo $nCompleto?>', '<?php echo $turno?>', '<?php echo $l_entrada?>', '<?php echo $l_salida?>', '<?php echo $m_entrada?>', '<?php echo $m_salida?>', '<?php echo $mi_entrada?>', '<?php echo $mi_salida?>', '<?php echo $j_entrada?>', '<?php echo $j_salida?>', '<?php echo $v_entrada?>', '<?php echo $v_salida?>', '<?php echo $s_entrada?>', '<?php echo $s_salida?>', '<?php echo $d_entrada?>', '<?php echo $d_salida?>', '<?php echo $CnH?>')">
+                        <?php echo $icoHorario?>
                     </button>
                 </td>
                 <td>
@@ -162,6 +215,7 @@ $consultar = mysqli_query($conexionLi, $cadena);
                 <th scope="col">Imprimir</th>
                 <th scope="col">Datos</th>
                 <th scope="col">Foto</th>
+                <th scope="col">Horario</th>
                 <th scope="col">Audio</th>
                 <th scope="col">Clave</th>
                 <th scope="col">Nombre</th>
@@ -230,7 +284,6 @@ mysqli_close($conexionLi);
     } );
 
 </script>
-
 <script>
     $('.toggle-two').bootstrapToggle();
 </script>
