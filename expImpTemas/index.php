@@ -133,7 +133,7 @@ $fecha=date("Y-m-d");
 
     <!-- Modal -->
     <div class="modal fade" id="modalArchivo" tabindex="-1" role="dialog" aria-labelledby="modalDatosCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-md" role="document" >
+        <div class="modal-dialog modal-md" role="document" >
         <div class="modal-content">
         <div class="modal-header" >
             <h5 class="modal-title" id="txtTitularFoto">Importar Tema</h5>
@@ -161,7 +161,7 @@ $fecha=date("Y-m-d");
             </button>
         </div>
         </div>
-    </div>
+        </div>
     </div>
     <!-- jQuery -->
     <script src="../plugins/jQuery/jquery-3.3.1.js"></script>   

@@ -17,6 +17,12 @@ function ocultarSecciones(){
     $("#editar-EC").hide();
     $("#Listado-EC").hide();
     //USUARIOS
+
+    // CREAR TEMAS
+    $("#createThemes").hide();
+    $("#guardar-CT").hide();
+    $("#editar-CT").hide();
+    $("#Listado-CT").hide();
 }
 
 function verAsistencias(){
@@ -60,6 +66,22 @@ function verEstadoCivil(){
 
     $("#estadoCivil").show();
     llenar_lista_EC();
+    var idTema=$("#inicioIdTema").val()
+    aplicarTema(idTema,'otro');      
+}
+function mostrarsTemas(){
+    ocultarSecciones();
+    $("#lblTitular").text("Crear Temas");
+    
+    $("#editar-CT").hide();
+    $("#guardar-CT").hide();
+    $("#Listado-CT").fadeIn();
+    // $("#frmGuardar-EC")[0].reset();
+    // $("#frmActualizar-EC")[0].reset();
+    $("#badgeInfo").text("Lista");
+
+    $("#createThemes").show();
+    llenar_lista_CT();
     var idTema=$("#inicioIdTema").val()
     aplicarTema(idTema,'otro');      
 }

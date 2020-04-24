@@ -31,7 +31,7 @@ $cadenaMenu = "SELECT
         <a href="#"><i class="fas fa-users"></i> Usuarios</a>
     </li>
     <li class="menu" id="liTemas">
-        <a href="#"><i class="fas fa-paint-brush"></i> Crear Temas</a>
+        <a href="javascript:mostrarsTemas()"><i class="fas fa-paint-brush"></i> Crear Temas</a>
     </li>
     <li class="active activado" id="liContras" >
         <a onClick="ContraMenu();" data-toggle="modal" data-target="modalContra"><i class="fas fa-key"></i> Cambiar Contraseña</a>

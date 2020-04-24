@@ -14,6 +14,8 @@ $fecha=date("Y-m-d");
      <link rel="stylesheet" href="../plugins/bootstrap-4.0.0/dist/css/bootstrap.min.css">
      <!-- Estilos propios -->
      <link rel="stylesheet" href="../css/estilos.css">
+     <!-- ColorPicker Jquery -->
+     <link rel="stylesheet" href="../plugins/jquery-minicolors/jquery.minicolors.css">
      <!-- Alertifyjs -->
      <link rel="stylesheet" href="../plugins/alertifyjs/css/alertify.min.css">
      <link rel="stylesheet" href="../plugins/alertifyjs/css/themes/default.min.css">
@@ -125,6 +127,22 @@ $fecha=date("Y-m-d");
                 </section>
                 
                 <section id="Listado-EC" class="animated  fadeIn contenedor" style="display:none;"></section>
+            </div>   
+
+            <div class="container" id="createThemes">
+                <section id="guardar-CT" style="display:none;">
+                    <?php
+                        include'../mTemas/fromGuardarTema.php';
+                    ?>
+                </section>
+
+                <section id="editar-CT" style="display:none;">
+                    <?php
+                        include'../mTemas/editartema.php';
+                    ?>
+                </section>
+                
+                <section id="Listado-CT" class="animated  fadeIn contenedor" style="display:none;"></section>
             </div>       
 
         </div>
@@ -154,6 +172,9 @@ $fecha=date("Y-m-d");
     <!-- Modal de Contra -->
         <?php include'../modales/modalHorario.php'; ?>
     <!-- Modal de Contra -->
+    <!-- Modal de Archivos -->
+        <?php include'../modales/modalArchivo.php'; ?>
+    <!-- Modal de Archivos -->
     <!-- jQuery -->
     <script src="../plugins/jQuery/jquery-3.3.1.js"></script>   
     <!-- Bootstrap-4 -->
@@ -165,6 +186,7 @@ $fecha=date("Y-m-d");
     <script src="../mLogin/funcionesL.js"></script> <!-- Login -->
     <script src="../mDatosPersonales/funcionesDP.js"></script> <!-- Datos Personales --> 
     <script src="../mEstadoCivil/funcionesEC.js"></script> <!-- Estado Civil -->
+    <script src="../mTemas/funcionesCT.js"></script> <!-- Estado Civil -->
     <!-- DataTables -->
     <script src="../plugins/dataTablesB4/js/jquery.dataTables.min.js"></script>
     <script src="../plugins/dataTablesB4/js/dataTables.bootstrap4.min.js"></script>
@@ -198,6 +220,8 @@ $fecha=date("Y-m-d");
     <script src="../plugins/popper/popper.min.js" type="text/javascript"></script>
     <!-- sweet alert -->
     <script src="../plugins/bootstrap-sweetalert-master/dist/sweetalert.js" type="text/javascript"></script>
+    <!-- ColorPicker Jquery -->
+    <script src="../plugins/jquery-minicolors/jquery.minicolors.js"></script>
     <script>
         combo_ecivil();
         selectTwo();
