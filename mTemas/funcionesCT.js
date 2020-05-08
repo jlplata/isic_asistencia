@@ -88,12 +88,13 @@ function nuevo_registro_CT(){
     $("#clave").focus();
 }
 $(document).ready( function() {
-
-    $('.demo').each( function() {
+    $('.colors').each( function() {
       $(this).minicolors({
         theme: 'bootstrap'
       });
     });
+    
+    
 });
 $("#btnCancelarG-CT , #btnCancelarA-CT").click(function(){
     $("#editar-CT").hide();
@@ -419,6 +420,7 @@ $('#btnProbar-CTE').click(function(){
     cssTema(colorBF, colorB, colorL, colorBd);
     setTimeout(function(){aplicarTema(idTema,'login')},5000);
 });
+
 
 
 

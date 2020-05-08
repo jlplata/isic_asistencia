@@ -15,22 +15,22 @@ $varGral="-CT";
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
                     <label for="colorL">Color de letras: </label>
-                    <input type="hidden" name="colorL" id="colorL" class="minicolors-input demo" value="#ffffff" size="7">  
+                    <input type="hidden" name="colorL" id="colorL" class="minicolors-input colors" value="#ffffff" size="7">  
                     <br>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
                     <label for="colorB">Color de Base: </label>
-                    <input type="hidden" name="colorB" id="colorB" class="minicolors-input demo" value="#db913d" size="7">  
+                    <input type="hidden" name="colorB" id="colorB" class="minicolors-input colors" value="#db913d" size="7">  
                     <br>            
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
                     <label for="colorBF">Color de Base Fuerte: </label>
-                    <input type="hidden" name="colorBF" id="colorBF" class="minicolors-input demo" value="#db913d" size="7">  
+                    <input type="hidden" name="colorBF" id="colorBF" class="minicolors-input colors" value="#db913d" size="7">  
                     <br>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
                     <label for="colorBd">Color de Borde: </label>
-                    <input type="hidden" name="colorBd" id="colorBd" class="minicolors-input demo" value="#db913d" size="7">  
+                    <input type="hidden" name="colorBd" id="colorBd" class="minicolors-input colors" value="#db913d" size="7">  
                     <br>
                 </div>
             </div>
