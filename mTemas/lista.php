@@ -85,7 +85,7 @@ $consultarMenu = mysqli_query($conexionLi, $cadenaMenu);
                     </button>
                 </td>
                 <td>
-                    <button <?php echo $dtnDesabilita?> type="button" class="aplicar btn btn-outline-info btn-sm activo" id="btnAplicar<?php echo $varGral?><?php echo $n?>" onclick="aplicarTema(<?php echo $id ?>,'enlace')">
+                    <button <?php echo $dtnDesabilita?> type="button" class="aplicar btn btn-outline-info btn-sm activo" id="btnAplicar<?php echo $varGral?><?php echo $n?>" colorL= '<?php echo $colorl?>' colorB = '<?php echo $colorb?>' colorBF = '<?php echo $colorbf?>' colorBd = '<?php echo $colorbd?>' n='<?php echo $n?>' onclick="aplicarTema(<?php echo $id ?>,'enlace')">
                              <i class="fas fa-check-double"></i>
                     </button>
                 </td>
@@ -197,4 +197,21 @@ mysqli_close($conexionLi);
 
 <script>
     $('.toggle-two').bootstrapToggle();
+    $('button.aplicar').each(function() {
+        var aver = $(this).attr('id');
+        console.log('este es el id '+ aver);
+
+        $(this).mouseover(function () {
+            var colorL =  $(this).attr('colorL');
+            var colorB =  $(this).attr('colorB');
+            var colorBF = $(this).attr('colorBF');
+            var colorBd = $(this).attr('colorBd');
+            cssTema(colorBF, colorB, colorL, colorBd);  
+        });
+
+        $(this).mouseout(function () {
+            var idTema=$("#inicioIdTema").val();
+            aplicarTema(idTema,'login');
+        });
+    });
 </script>
