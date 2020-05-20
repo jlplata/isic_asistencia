@@ -17,7 +17,10 @@ function ocultarSecciones(){
     $("#editar-EC").hide();
     $("#Listado-EC").hide();
     //USUARIOS
-
+    $("#usuarios").hide();
+    $("#guardar-Us").hide();
+    $("#editar-Us").hide();
+    $("#Listado-Us").hide();
     // CREAR TEMAS
     $("#createThemes").hide();
     $("#guardar-CT").hide();
@@ -88,6 +91,16 @@ function mostrarsTemas(){
 
 function verUsuarios(){
     ocultarSecciones();
+
+    $("#lblTitular").text("Usuarios");
+    $("#badgeInfo").text("Lista");
+    $("#editar-Us").hide();
+    $("#guardar-Us").hide();
+    $("#Listado-Us").fadeIn();
+    $("#usuarios").show();
+    llenar_lista_Us();
+    var idTema=$("#inicioIdTema").val()
+    aplicarTema(idTema,'otro');  
 }
 
 

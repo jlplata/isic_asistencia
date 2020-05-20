@@ -43,7 +43,7 @@ $varGral="-CT";
                         Cancelar
                     </button>
                 </div>
-                <div class="col text-right">
+                <div class="col text-center">
                     <button  type="button" class="btn btn-outline-info  activo btnEspacio" id="btnProbar<?php echo $varGral?>G">
                         <i class="fas fa-play"></i>
                         Probar

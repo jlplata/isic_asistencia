@@ -143,6 +143,22 @@ $fecha=date("Y-m-d");
                 </section>
                 
                 <section id="Listado-CT" class="animated  fadeIn contenedor" style="display:none;"></section>
+            </div>     
+
+            <div class="container" id="usuarios">
+                <section id="guardar-Us" style="display:none;">
+                    <?php
+                        include'../mUsuarios/fromGuardar.php';
+                    ?>
+                </section>
+
+                <section id="editar-Us" style="display:none;">
+                    <?php
+                        include'../mUsuarios/editarUsuario.php';
+                    ?>
+                </section>
+                
+                <section id="Listado-Us" class="animated fadeIn contenedor" style="display:none;"></section>
             </div>       
 
         </div>
@@ -175,6 +191,9 @@ $fecha=date("Y-m-d");
     <!-- Modal de Archivos -->
         <?php include'../modales/modalArchivo.php'; ?>
     <!-- Modal de Archivos -->
+    <!-- Modal de Permisos -->
+        <?php include'../modales/modalPermisos.php'; ?>
+    <!-- Modal de Permisos -->
     <!-- jQuery -->
     <script src="../plugins/jQuery/jquery-3.3.1.js"></script>   
     <!-- Bootstrap-4 -->
@@ -186,7 +205,8 @@ $fecha=date("Y-m-d");
     <script src="../mLogin/funcionesL.js"></script> <!-- Login -->
     <script src="../mDatosPersonales/funcionesDP.js"></script> <!-- Datos Personales --> 
     <script src="../mEstadoCivil/funcionesEC.js"></script> <!-- Estado Civil -->
-    <script src="../mTemas/funcionesCT.js"></script> <!-- Estado Civil -->
+    <script src="../mTemas/funcionesCT.js"></script> <!-- Temas -->
+    <script src="../mUsuarios/funcionesUs.js"></script> <!-- Usuarios -->
     <!-- DataTables -->
     <script src="../plugins/dataTablesB4/js/jquery.dataTables.min.js"></script>
     <script src="../plugins/dataTablesB4/js/dataTables.bootstrap4.min.js"></script>
@@ -224,6 +244,9 @@ $fecha=date("Y-m-d");
     <script src="../plugins/jquery-minicolors/jquery.minicolors.js"></script>
     <script>
         combo_ecivil();
+        combo_personasG();
+        combo_personas();
+        combo_temas();
         selectTwo();
         
     </script>

@@ -371,37 +371,6 @@ function importarArchivo(){
         }
     });
 }
-function ProbarTema(colorL,colorB,colorBF,colorBd) {
-    
-    var h_sidebar=colorBF;
-    var color_base=colorB;
-    var letra_color=colorL;
-    var color_borde=colorBd;
-    
-    cssTema(h_sidebar,color_base,letra_color,color_borde);
-
-    if (validador!='login'){
-        relacionarTema(id);
-        var tema=dataArray.result.nombre_tema;
-        $("#inicioIdTema").val(dataArray.result.id_tema);
-        //alertify.success(actividad,2);
-
-        if(validador=='enlace'){
-            
-            preloader(1,"Cambiando al tema "+tema);
-            actividad  ="Ha cambiado al tema "+tema;
-            eleguiraudio(Math.round(Math.random() * (5 - 1)));
-            
-            var idUser=$("#inicioIdusuario").val();
-
-            $('#mnuColapsado').click();
-
-            log(actividad,idUser);
-            $("html, body").animate({ scrollTop: 0 }, 1000); 
-            return false; 
-        }
-    }
-}
 $('#btnProbar-CTG').click(function(){
     var colorL =  $('#colorL').val();
     var colorB =  $('#colorB').val();
@@ -420,7 +389,3 @@ $('#btnProbar-CTE').click(function(){
     cssTema(colorBF, colorB, colorL, colorBd);
     setTimeout(function(){aplicarTema(idTema,'login')},5000);
 });
-
-
-
-

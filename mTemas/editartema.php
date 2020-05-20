@@ -46,11 +46,13 @@ $varGral="-CT";
                         Cancelar
                     </button>
                 </div>
-                <div class="col text-right">
-                <button  type="button" class="btn btn-outline-info  activo btnEspacio" id="btnProbar<?php echo $varGral?>E">
+                <div class="col text-center">
+                    <button  type="button" class="btn btn-outline-info  activo btnEspacio" id="btnProbar<?php echo $varGral?>E">
                         <i class="fas fa-play"></i>
                         Probar
                     </button>
+                </div>
+                <div class="col text-right">
                     <button  type="submit" class="btn btn-outline-primary  activo btnEspacio" id="btnActualizar<?php echo $varGral?>">
                         <i class='fa fa-save fa-lg'></i>
                         Guardar Información

@@ -198,9 +198,6 @@ mysqli_close($conexionLi);
 <script>
     $('.toggle-two').bootstrapToggle();
     $('button.aplicar').each(function() {
-        var aver = $(this).attr('id');
-        console.log('este es el id '+ aver);
-
         $(this).mouseover(function () {
             var colorL =  $(this).attr('colorL');
             var colorB =  $(this).attr('colorB');
