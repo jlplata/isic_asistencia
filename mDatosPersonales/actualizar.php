@@ -37,7 +37,7 @@ $cadena = "UPDATE datos
 				fecha_registro = '$fecha', 
 				hora_registro  = '$hora'
 			WHERE 
-				id_datos= $id";
+				id_datos = $id";
 $actualizar = mysqli_query($conexionLi, $cadena);
 
 //En caso de error imprime

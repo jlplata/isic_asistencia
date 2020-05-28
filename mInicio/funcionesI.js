@@ -37,6 +37,15 @@ function verAsistencias(){
     $("#badgeInfo").text("Dezliza tú tarjeta");
     var idTema=$("#inicioIdTema").val()
     aplicarTema(idTema,'otro');
+
+    setTimeout(function(){
+        $('#ClaveReg').focus();
+        $('#ClaveReg').empty();
+    },1000);
+
+    $("#soundActiv").bootstrapToggle('on');
+    alertify.success('Bienvenido al registro de asistencias',2);
+    hablarAsis('Bienvenido al registro de asistencias');
 }
 
 function verDatosPersonales(){
@@ -190,6 +199,11 @@ function cssTema(h_sidebar,color_base,letra_color,color_borde){
 
     var duracion=".5s";
 
+    $('.reloj, .fecha ').css({
+        color: letra_color,
+        "background-color": h_sidebar,
+        border: '4px solid'+ color_borde,
+    });
     $(".myJT").css({
         transition : 'background-color'+ duracion +' ease-in-out',
         "background-color": color_base,

@@ -37,6 +37,7 @@ $fecha=date("Y-m-d");
      <link href="../plugins/bootstrap-fileinput-master/themes/explorer-fas/theme.css" media="all" rel="stylesheet" type="text/css"/>
      <!-- sweet alert -->
      <link href="../plugins/bootstrap-sweetalert-master/dist/sweetalert.css" media="all" rel="stylesheet" type="text/css"/>
+     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto&display=swap" rel="stylesheet">
 </head>
 
 <body class="animated  fadeIn">
@@ -207,6 +208,7 @@ $fecha=date("Y-m-d");
     <script src="../mEstadoCivil/funcionesEC.js"></script> <!-- Estado Civil -->
     <script src="../mTemas/funcionesCT.js"></script> <!-- Temas -->
     <script src="../mUsuarios/funcionesUs.js"></script> <!-- Usuarios -->
+    <script src="../mAsistencias/funcionesAs.js"></script> <!-- Asistencias -->
     <!-- DataTables -->
     <script src="../plugins/dataTablesB4/js/jquery.dataTables.min.js"></script>
     <script src="../plugins/dataTablesB4/js/dataTables.bootstrap4.min.js"></script>

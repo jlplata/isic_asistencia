@@ -14,7 +14,7 @@ $("#frmLogin").submit(function(e){
              //console.log(respuesta);
             var registros=dataArray.cRegistros;
             var dias=dataArray.dias;
-            if (registros !=0 ) {//existe el usuario
+            if (registros != 0 ) {//existe el usuario
                 if(dias < 0){//caducidad
                     swal({
                         title: "Mensaje!",

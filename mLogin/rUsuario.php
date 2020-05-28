@@ -14,6 +14,7 @@ $cadena = "SELECT
 				id_dato,
 				id_tema,
 				(SELECT CONCAT(nombre,' ',ap_paterno,' ',ap_materno) FROM datos WHERE datos.id_datos=usuarios.id_dato) as persona,
+				(SELECT clave FROM datos WHERE datos.id_datos=usuarios.id_dato) as clave,
 				nombre_usuario,
 				permiso_datos_persona,
 				permiso_ecivil,
